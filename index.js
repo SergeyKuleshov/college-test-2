@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import _ from 'lodash';
+// import _ from 'lodash';
 
 // import { fileURLToPath } from "node:url";
 // import path from "node:path";
@@ -47,32 +47,27 @@ normalizeData.forEach((row) => {
   enemies.push(current);
 });
 
-
 console.log(`Всего видов: ${enemies.length}`);
 
 const strangest = enemies
-  .reduce((acc, cur) => acc['сила'] > cur['сила']
+  .reduce((acc, cur) => (acc['сила'] > cur['сила']
     ? acc
-    : cur);
+    : cur));
 
-  console.log(`Стоимость 10 самых сильных: ${strangest['цена найма'] * 10}`);
+console.log(`Стоимость 10 самых сильных: ${strangest['цена найма'] * 10}`);
 
 const fat = enemies
-  .reduce((acc, cur) => acc['средний вес'] > cur['средний вес']
+  .reduce((acc, cur) => (acc['средний вес'] > cur['средний вес']
     ? acc
-    : cur);
+    : cur));
 
 const slim = enemies
-  .reduce((acc, cur) => acc['средний вес'] < cur['средний вес']
+  .reduce((acc, cur) => (acc['средний вес'] < cur['средний вес']
     ? acc
-    : cur);
+    : cur));
 
-  console.log(`Стоимость толстых: ${fat['цена найма'] * fat['кол-во человек в отряде']}`);
-  console.log(`Стоимость худых: ${slim['цена найма'] * slim['кол-во человек в отряде']}`);
+console.log(`Стоимость толстых: ${fat['цена найма'] * fat['кол-во человек в отряде']}`);
+console.log(`Стоимость худых: ${slim['цена найма'] * slim['кол-во человек в отряде']}`);
 
 // END
 // console.log(enemies);
-
-
-
-// console.log(_.sortBy(enemies, [function(o) {return o['сила']}]));
